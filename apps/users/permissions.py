@@ -2,9 +2,6 @@ from rest_framework import permissions
 
 
 class IsTeacher(permissions.BasePermission):
-    """
-    Разрешение: Пользователь должен быть учителем.
-    """
     def has_permission(self, request, view):
         return request.user.is_authenticated and request.user.role == 'teacher'
 
@@ -13,10 +10,7 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
         if request.method in permissions.SAFE_METHODS:
             return True
-        # obj — это Lesson или Assignment
         owner = getattr(obj, 'owner', None)
-
-        # если это lesson/assignment, достаём владельца курса
         if hasattr(obj, 'course'):
             owner = getattr(obj.course, 'owner', None)
         elif hasattr(obj, 'lesson'):
