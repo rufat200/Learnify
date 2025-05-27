@@ -24,12 +24,13 @@ htmlcov/
 .vscode/
 .idea/
 *.iml
-*.sublime-project
+*.sublime-projec8t
 *.sublime-workspace
 
-media/*
 !media/default
-!media/materials
-!media/student_submissions
+media/materials/*
+!media/materials/.gitkeep
+media/student_submissions/*
+!media/student_submissions/.gitkeep
 templates
 
