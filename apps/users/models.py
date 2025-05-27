@@ -27,7 +27,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     full_name = models.CharField(max_length=255, blank=True, null=True)
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, blank=True, null=True)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True) # дефолт должен быть False, но отправка на почту почему-то ОПЯТЬ сломалась
     is_staff = models.BooleanField(default=True)
     date_joined = models.DateTimeField(auto_now_add=True)
 

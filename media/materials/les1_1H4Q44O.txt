@@ -1,0 +1,17 @@
+Привет всем и это материал по C#
+
+
+
+
+using system;
+using collection.generics;
+
+
+static void main(*args){
+    int a = 10;
+    int b = 20;
+    Console.WriteLine(a + b);
+    while(True){
+        Console.WriteLine("Hello, World!")
+    }
+}

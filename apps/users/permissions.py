@@ -3,7 +3,7 @@ from rest_framework import permissions
 
 class IsTeacher(permissions.BasePermission):
     def has_permission(self, request, view):
-        return request.user.is_authenticated and request.user.role == 'teacher'
+        return request.user and request.user.is_authenticated and request.user.role == 'teacher'
 
 
 class IsOwnerOrReadOnly(permissions.BasePermission):
@@ -11,7 +11,10 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
         owner = getattr(obj, 'owner', None)
-        if hasattr(obj, 'course'):
+
+        if hasattr(obj, 'student'):
+            owner = obj.student
+        elif hasattr(obj, 'course'):
             owner = getattr(obj.course, 'owner', None)
         elif hasattr(obj, 'lesson'):
             owner = getattr(obj.lesson.course, 'owner', None)

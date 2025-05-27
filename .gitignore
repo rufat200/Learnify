@@ -1,6 +1,5 @@
 venv/
 .env
-.env.docker
 
 Pipfile
 Pipfile.lock
@@ -29,4 +28,8 @@ htmlcov/
 *.sublime-workspace
 
 media/*
-!media/.gitkeep
+!media/default
+!media/materials
+!media/student_submissions
+templates
+
